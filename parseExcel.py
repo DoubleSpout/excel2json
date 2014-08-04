@@ -4,6 +4,7 @@ import json
 import codecs
 import sys
 import getopt
+from types import *
 
 
 __opts, _ = getopt.getopt(sys.argv[1:], "p:o:") #获取命令行参数
@@ -39,8 +40,11 @@ def excel_table_byindex(file= 'file.xls',colnameindex=0,by_index=0):
          if row:
              app = []
              for i in range(len(colnames)):
+                print row[i]
+                if type(row[i]) == FloatType:
+                    row[i] = str(int(row[i]))
                 app.append(row[i].encode('UTF-8','ignore'))
-             list.append(app)
+         list.append(app)
     return list
 
 
