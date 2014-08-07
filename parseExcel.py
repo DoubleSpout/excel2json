@@ -43,7 +43,14 @@ def excel_table_byindex(file= 'file.xls',colnameindex=0,by_index=0):
                 print row[i]
                 if type(row[i]) == FloatType:
                     row[i] = str(int(row[i]))
-                app.append(row[i].encode('UTF-8','ignore'))
+                if i == 2:
+                    buildNo = row[i].split('-')[0]
+                    houseNo = row[i].split('-')[1]
+                    app.append(buildNo.encode('UTF-8','ignore'))
+                    app.append(houseNo.encode('UTF-8','ignore'))
+                    continue
+                else:
+                    app.append(row[i].encode('UTF-8','ignore'))
          list.append(app)
     return list
 
